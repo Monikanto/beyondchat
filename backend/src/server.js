@@ -6,6 +6,9 @@ const scrapeOldestArticles = require("./services/scraper.service");
 const searchGoogleForArticles = require("./phase2/googleSearch.service");
 const Article = require("./models/Article");
 const scrapeArticleContent = require("./phase2/articleScraper.service");
+const rewriteArticle = require("./phase2/llmRewrite.service");
+// const scrapeArticleContent = require("./phase2/articleScraper.service");
+
 
 
 
@@ -64,6 +67,60 @@ app.post("/phase2/scrape-refs", async (req, res) => {
 
   res.json(results);
 });
+
+
+
+
+//route for rewrite with LLM using Btw using OpenAI
+app.post("/phase2/rewrite/:id", async (req, res) => {
+  try {
+    const articleId = req.params.id.trim();
+    const originalArticle = await Article.findById(articleId);
+
+    if (!originalArticle || !originalArticle.content) {
+      return res.status(400).json({
+        message: "Original article content not found"
+      });
+    }
+
+    const { referenceUrls } = req.body;
+
+    const references = [];
+    for (const url of referenceUrls) {
+      const content = await scrapeArticleContent(url);
+      references.push(content);
+    }
+
+    const rewrittenContent = await rewriteArticle(
+      originalArticle.content,
+      references
+    );
+
+    const updatedArticle = await Article.create({
+      title: originalArticle.title,
+      content: rewrittenContent,
+      url: originalArticle.url,
+      source: "BeyondChats",
+      version: "updated",
+      parentArticleId: originalArticle._id
+    });
+
+    res.json({
+      message: "Article rewrite pipeline executed successfully",
+      note: "LLM execution depends on provider availability",
+      updatedArticleId: updatedArticle._id
+    });
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: err.message });
+  }
+});
+
+
+
+
+
 
 
 
