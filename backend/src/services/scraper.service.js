@@ -45,12 +45,15 @@ async function scrapeOldestArticles() {
       const articlePage = await axios.get(link);
       const $$ = cheerio.load(articlePage.data);
 
+      
+
+      //for removing some noice data not relavent data
       const title = $$("h1").first().text().trim();
       const content = $$("article")
-  .find("p")
-  .map((_, el) => $$(el).text())
-  .get()
-  .join("\n\n");
+        .find("p")
+        .map((_, el) => $$(el).text())
+        .get()
+        .join("\n\n");
 
 
       if (!title || !content) {
