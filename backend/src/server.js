@@ -7,6 +7,8 @@ const searchGoogleForArticles = require("./phase2/googleSearch.service");
 const Article = require("./models/Article");
 const scrapeArticleContent = require("./phase2/articleScraper.service");
 const rewriteArticle = require("./phase2/llmRewrite.service");
+const cors = require("cors");
+
 // const scrapeArticleContent = require("./phase2/articleScraper.service");
 
 
@@ -14,6 +16,8 @@ const rewriteArticle = require("./phase2/llmRewrite.service");
 
 const app = express();
 app.use(express.json());
+app.use(cors());
+
 
 connectDB();
 
