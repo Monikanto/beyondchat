@@ -32,7 +32,7 @@ ${references.map(r => r.slice(0, 1000)).join("\n\n")}
     return result.response.text();
 
   } catch (err) {
-    console.warn("⚠️ LLM unavailable, using fallback rewrite");
+    console.warn("LLM unavailable, using fallback rewrite");
 
     // Fallback content (still valid pipeline)
     return `

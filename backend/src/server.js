@@ -9,7 +9,7 @@ const scrapeArticleContent = require("./phase2/articleScraper.service");
 const rewriteArticle = require("./phase2/llmRewrite.service");
 const cors = require("cors");
 
-// const scrapeArticleContent = require("./phase2/articleScraper.service");
+
 
 
 
@@ -75,7 +75,7 @@ app.post("/phase2/scrape-refs", async (req, res) => {
 
 
 
-//route for rewrite with LLM using Btw using OpenAI
+//route for rewrite with LLM using Gemini
 app.post("/phase2/rewrite/:id", async (req, res) => {
   try {
     const articleId = req.params.id.trim();
