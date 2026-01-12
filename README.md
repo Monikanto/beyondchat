@@ -16,7 +16,7 @@ This project was built as part of an internship assignment to demonstrate backen
 
 ---
 
-## 🧩 Features
+##  Features
 
 - Scrapes articles from BeyondChats blog
 - Stores articles in MongoDB with versioning
@@ -28,7 +28,7 @@ This project was built as part of an internship assignment to demonstrate backen
 
 ---
 
-## 🏗️ Architecture Overview
+##  Architecture Overview
 Frontend (React + Tailwind)
 |
 | HTTP (REST API)
@@ -41,7 +41,7 @@ MongoDB Atlas
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 ### Frontend
 - React (Vite)
@@ -88,7 +88,7 @@ beyondchat/
 
 ---
 
-## 🔄 How It Works
+##  How It Works
 
 1. **Scraping**
    - The backend scrapes articles from BeyondChats using Cheerio.
@@ -125,7 +125,7 @@ This reflects real-world production design.
 
 ---
 
-## 🧪 Local Setup (Optional)
+##  Local Setup (Optional)
 
 ###Git glone the repo and follow the below steps
 
