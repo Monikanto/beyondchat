@@ -62,7 +62,7 @@ MongoDB Atlas
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 beyondchat/
 ├── backend/
@@ -109,7 +109,7 @@ beyondchat/
 
 ---
 
-## ⚠️ AI Rewrite Note (Important)
+##  AI Rewrite Note (Important)
 
 AI rewriting depends on external LLM providers, which may be unavailable due to:
 - API changes
