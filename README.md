@@ -2,7 +2,7 @@
 
 A full-stack web application that scrapes articles from BeyondChats, stores them in a database, and displays **original articles alongside AI-enhanced versions** for comparison.
 
-This project was built as part of an internship assignment to demonstrate backend scraping, database design, API development, frontend integration, and deployment.
+
 
 ---
 
